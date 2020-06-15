@@ -13,6 +13,9 @@ export default {
 					if (res.data.state == '30001') {
 						Taro.navigateTo({url:'/pages/first-login/first-login'})
 					}
+				},
+				fail:function(err){
+					
 				}
 			})
 		} else {

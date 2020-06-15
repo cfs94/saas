@@ -15,6 +15,7 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/user/user',
       'pages/first-login/first-login',
       'pages/register/register',
       'pages/login/login',
@@ -31,7 +32,7 @@ class App extends Component {
       'pages/forget-pwd/forget-pwdy',
       'pages/trade/trade',
       'pages/trade/choose-per',
-      'pages/user/user',
+      
       'pages/user/about-us',
       'pages/account/account',
       'pages/account/per-data',
@@ -42,7 +43,8 @@ class App extends Component {
       'pages/artical/artical',
       'pages/artical/detail',
       'pages/spread/spread',
-      'pages/data/data'
+      'pages/data/data',
+      // 'pages/memberpackage'
     ],
     window: {
       backgroundTextStyle: 'light',

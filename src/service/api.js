@@ -45,3 +45,7 @@ export const GET_PROVINCE = `${host}/saas/get_province.php`
 export const GET_CITY = `${host}/saas/get_city.php`
 export const UP_IMG = `${host}/saas/upload_img.php`
 
+
+//购买会员
+export const BUY_MEMBER = `${host}/saas/vip/buy.php`
+export const CHECK_MEMBER = `${host}/saas/vip/check_order.php`

@@ -10,6 +10,7 @@ import comment from './assets/comment.png'
 import agentG from './assets/agent_g.png'
 import custom from './assets/custom.png'
 import yuang from './assets/yuang.png'
+import memberICon from './assets/membericon.png'
 import './index.scss'
 
 let Session = require('@utils/first-login/session')
@@ -42,6 +43,10 @@ const navList = [{
   id:7,
   img:data,
   name:'数据统计'
+},,{
+  id:8,
+  img:memberICon,
+  name:'会员入口'
 }]
 export default class Nav extends Component {
   componentDidMount () {

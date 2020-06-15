@@ -18,6 +18,7 @@ export default class OrderItem extends Component {
 			order_id:id
 		}
 		api.api(RE_BUY,data).then(res => {
+        
 				if (res.data.state == 0) {
 					Taro.requestPayment({
  						timeStamp:res.data.data.timeStamp,

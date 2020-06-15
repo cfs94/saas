@@ -74,6 +74,7 @@ Page({
             encryptedData: options.encryptedData,
             iv: options.iv,
           }
+          console.log(loginParams)
           qcloud.requestLogin({
             loginParams, success() {
                   let corpid = Session.get().corpid

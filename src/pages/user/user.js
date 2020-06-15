@@ -11,7 +11,9 @@ import orderImg from './assets/order.png'
 import aboutImg from './assets/about.png'
 import logoutImg from './assets/logout.png'
 import kefuImg from './assets/kefu.png'
+import getM from '@assets/getm.png'
 import './user.scss'
+import MemberPackage from '../memberpackage'
 let Session = require('@utils/first-login/session')
 
 class User extends Component {
@@ -38,9 +40,12 @@ class User extends Component {
 				if (res.data.state == 1) {
 					setGlobalData('info',res.data.data.info)
 					setGlobalData('avatarUrl',res.data.data.avatarUrl)
+					console.log(res.data)
 					this.setState({
 						info:res.data.data.info,
-						avatarUrl:res.data.data.avatarUrl
+						avatarUrl:res.data.data.avatarUrl,
+						memberType:res.data.data.info.app_name,
+						endTime:res.data.data.info.service_end
 					})
 				}
 			})
@@ -69,12 +74,17 @@ class User extends Component {
 		})
 		
 	}
+
+	
+	
+
+
 	componentDidShow () {
 		this.getPersonInfo()
 	}
-  onShareAppMessage(obj) {}
+  	onShareAppMessage(obj) {}
 	render () {
-		const { info, avatarUrl } = this.state
+		const { info, avatarUrl ,memberType,endTime} = this.state
 		return (
 			<View className='user'>
 				<View className='user-top' onClick={this.jumpPerData}>
@@ -83,18 +93,39 @@ class User extends Component {
 					</View>
 					<View className='user-con'>
 						<View className='info-wrap'>
-							<Image className='img' src={companyImg} />
-							<Text className='text'>{info.corpname}</Text>
+							{/* <Image className='img' src={companyImg} /> */}
+							{/* <Text className='text'>{info.corpname}</Text> */}
+							<Text className='text'>{info.username}</Text>
 						</View>
 						<View className='info-wrap wrap2'>
-							<Image className='img img-phone' src={phoneImg} />
-							<Text className='text'>{info.username}</Text>
+							{/* <Image className='img img-phone' src={phoneImg} /> */}
+							{/* <Text className='text'>{info.username}</Text> */}
+							<Text className='text'>{info.corpname}</Text>
 						</View>
 					</View>
 					<View>
 						<Image src={arrowImg} className='arrow-img' />
 					</View>
 				</View>
+
+				<View className='package-warp'>
+					<View className='member-info'>
+						<View>
+							<Text className='member-type'>{memberType}</Text>
+							<Image className='member-icon'></Image>
+						</View>
+						<View className='end-time'>
+							<Text>到期时间：</Text>
+							<Text>{endTime}</Text>
+						</View>
+					</View>
+					<View className='look-over'>
+						查看权益
+					</View>
+				</View>
+
+				<Image className='get-member' src={getM}></Image>
+
 				<View className='item-wrap'>
 					<View className='item' onClick={this.jumpAccount}>
 						<Image className='imgs' src={setImg} />
@@ -122,6 +153,10 @@ class User extends Component {
 						<Image className='img' src={arrowImg} />
 					</View>
 				</View>
+				
+					
+				<MemberPackage getInfo={this.getPersonInfo.bind(this)}/>
+				<View className='get-btn'>立即享受会员特权</View>
 			</View>
 		)
 	}

@@ -1,0 +1,140 @@
+.packagemain{
+    width: 100%;
+    text-align: center;
+    margin-top: 64px;
+    .packagename{
+        font-size:36px;
+        font-family:Source Han Sans CN;
+        font-weight:800;
+        color:rgba(244,185,40,1);
+        display: block;
+    }
+    .packagetitle{
+        display: inline-block;
+        width:427px;
+        font-size:36px;
+        font-family:JZhongYi;
+        margin: 62px;
+        line-height: 50px;
+        font-weight:400;
+        color:rgba(255,65,20,1);
+    }
+    .diamondmember{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .diamondbox{
+            width:540px;
+            height:200px;
+            background:linear-gradient(-90deg,rgba(255,197,197,1),rgba(255,235,235,1));
+            box-shadow:0px 9px 10px 0px rgba(252,78,50,0.09);
+            border-radius:12px;
+            display: flex;
+            flex-direction: column;
+            span{
+                font-size:24px;
+                font-family:AlibabaPuHuiTi;
+                font-weight:400;
+                color:rgba(255,69,69,1);
+            }
+            span:nth-child(2){
+                text-decoration:line-through;
+            }
+        }
+        .diamonbtn{
+            width:480px;
+            margin-top: 24px;
+            height:54px;
+            line-height: 54px;
+            text-align: center;
+            background:rgba(252,78,50,1);
+            border-radius:27px;
+            font-size:30px;
+            font-family:Microsoft YaHei;
+            font-weight:400;
+            color:rgba(255,255,255,1);
+        }
+    }
+    .blackmember{
+        width: 100%;
+        display: flex;
+        margin-top: 75px;
+        flex-direction: column;
+        align-items: center;
+        .blackbox{
+            width:540px;
+            height:200px;
+            background:linear-gradient(-90deg,rgba(48,48,48,1),rgba(126,126,126,1));
+            box-shadow:0px 1px 10px 0px rgba(255,167,104,0.34);
+            border-radius:12px;
+            display: flex;
+            flex-direction: column;
+           span{
+            font-size:24px;
+            font-family:AlibabaPuHuiTi;
+            font-weight:400;
+            color:rgba(255,255,255,1);
+           }
+           span:nth-child(2){
+            text-decoration:line-through;
+           }
+           span:nth-child(3){
+            color:rgba(255,203,89,1);
+           }
+            
+        }
+        .blackbtn{
+            width:480px;
+            height:54px;
+            line-height: 54px;
+            text-align: center;
+            margin-top: 24px;
+            background:rgba(255,194,85,1);
+            border-radius:27px;
+            font-size:30px;
+            font-family:Microsoft YaHei;
+            font-weight:400;
+            color:rgba(126,75,0,1);
+        }
+    }
+
+    .membertip{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba($color: #000000, $alpha: 0.5);
+        .tipbox{
+            width:600px;
+            height:300px;
+            background:rgba(255,255,255,1);
+            border-radius:5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .btn{
+                width:130px;
+                height:50px;
+                line-height: 50px;
+                text-align: center;
+                font-size:26px;
+                margin-top: 50px;
+                font-family:Microsoft YaHei;
+                font-weight:400;
+                color:rgba(255,255,255,1);
+                background:linear-gradient(-90deg,rgba(255,136,95,1) 0%,rgba(255,96,95,1) 100%);
+                border-radius:11px;
+                display: inline-block;
+            }
+        }
+    }
+
+
+}
