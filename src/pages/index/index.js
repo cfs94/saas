@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import Nav from './nav'
 import Banner from './banner'
+import ServiceItem from './serviceitems'
 import banner from './assets/qybb.png'
 import './index.scss'
 let Session = require('@utils/first-login/session')
@@ -18,6 +19,7 @@ export default class Index extends Component {
           <Image className='top-img' src={banner} />
         </View>
         <Nav />
+        <ServiceItem></ServiceItem>
         {/* <Banner /> */}
       </View>
     )

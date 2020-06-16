@@ -43,8 +43,7 @@ class App extends Component {
       'pages/artical/artical',
       'pages/artical/detail',
       'pages/spread/spread',
-      'pages/data/data',
-      // 'pages/memberpackage'
+      'pages/data/data'
     ],
     window: {
       backgroundTextStyle: 'light',

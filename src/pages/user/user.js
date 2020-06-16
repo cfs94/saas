@@ -82,6 +82,7 @@ class User extends Component {
 	}
 
 	
+	
 	componentDidShow () {
 		this.getPersonInfo()
 	}
