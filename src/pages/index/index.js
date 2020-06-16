@@ -18,7 +18,7 @@ export default class Index extends Component {
           <Image className='top-img' src={banner} />
         </View>
         <Nav />
-        <Banner />
+        {/* <Banner /> */}
       </View>
     )
   }

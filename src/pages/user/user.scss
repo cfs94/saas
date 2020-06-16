@@ -59,19 +59,25 @@ page {
 		padding: 0 50px;
 		justify-content: space-between;
 		align-items: center;
+		position: relative;
 		.member-info{
 			display: flex;
 			flex-direction: column;
-			.member-type{
-				font-size:30px;
-				font-family:PingFangSC;
-				font-weight:500;
-				color:rgba(252,78,50,1);
-			}
-			.member-icon{
-				width:45px;
-				height:41px;
-				border: 1px solid black;
+			.member-t{
+				display: flex;
+				align-items: center;
+				.member-type{
+					font-size:30px;
+					font-family:PingFangSC;
+					font-weight:700;
+					color:rgba(252,78,50,1);
+				}
+				.member-icon{
+					width:45px;
+					height:41px;
+					margin-left: 10px;
+					margin-top: 10px;
+				}
 			}
 			.end-time{
 				font-size:24px;
@@ -92,8 +98,82 @@ page {
 			font-family:Microsoft YaHei;
 			font-weight:400;
 			color:rgba(252,78,50,1);
+			z-index: 10;
+		}
+		.dia-icon{
+			width: 97px;
+			height: 97px;
+			position: absolute;
+			right: 5px;
+			top: 45px;
 		}
 	}
+
+	.black-warp{
+		width:680px;
+		height:160px;
+		background:linear-gradient(-90deg,rgba(48,48,48,1),rgba(126,126,126,1));
+		box-shadow:0px 1px 10px 0px rgba(255,167,104,0.34);
+		
+		border-radius:12px;
+		box-sizing: border-box;
+		display: flex;
+		// justify-content: center;
+		padding: 0 50px;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		.member-info{
+			display: flex;
+			flex-direction: column;
+			.member-t{
+				display: flex;
+				align-items: center;
+				.member-type{
+					font-size:30px;
+					font-family:PingFangSC;
+					font-weight:700;
+					color:rgba(255,255,255,1);
+				}
+				.member-icon{
+					width:45px;
+					height:41px;
+					margin-left: 10px;
+					margin-top: 10px;
+				}
+			}
+			.end-time{
+				font-size:24px;
+				font-family:AlibabaPuHuiTi;
+				font-weight:400;
+				color:rgba(255,255,255,1);
+				margin-top: 10px;
+			}
+		}
+		.look-over{
+			width:140px;
+			height:40px;
+			line-height: 40px;
+			text-align: center;
+			background:linear-gradient(-40deg,rgba(220,167,73,1) 0%,rgba(255,194,85,1) 100%);
+			border-radius:12px;
+			font-size:24px;
+			font-family:Microsoft YaHei;
+			font-weight:400;
+			color:rgba(131,78,0,1);
+			z-index: 10;
+		}
+		.dia-icon{
+			width: 97px;
+			height: 97px;
+			position: absolute;
+			right: 5px;
+			top: 45px;
+		}
+	}
+
+
+
 	.get-member{
 		width:690px;
 		height:120px;
@@ -125,7 +205,9 @@ page {
 				width:100%;
 				background:#fff;
 				height:84px;
-				line-height:84px;
+				// line-height:84px;
+				display: flex;
+				align-items: center;
 				color:#333;
 				font-size:30px;
 				box-sizing:border-box;
@@ -137,6 +219,10 @@ page {
 					vertical-align:middle;
 				}
 				.title {
+					font-size:30px;
+					font-family:PingFang SC;
+					font-weight:400;
+					color:rgba(52,52,52,1);
 					margin-left:36px;
 				}
 				.img {

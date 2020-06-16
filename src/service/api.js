@@ -49,3 +49,6 @@ export const UP_IMG = `${host}/saas/upload_img.php`
 //购买会员
 export const BUY_MEMBER = `${host}/saas/vip/buy.php`
 export const CHECK_MEMBER = `${host}/saas/vip/check_order.php`
+
+//获取套餐价格
+export const MEMBER_PRICE = `${host}/saas/vip/app.php`

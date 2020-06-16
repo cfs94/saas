@@ -16,6 +16,10 @@ import './index.scss'
 let Session = require('@utils/first-login/session')
 
 const navList = [{
+  id:8,
+  img:memberICon,
+  name:'会员入口'
+},{
   id:1,
   img:sj,
   name:'商机分配'
@@ -43,10 +47,6 @@ const navList = [{
   id:7,
   img:data,
   name:'数据统计'
-},,{
-  id:8,
-  img:memberICon,
-  name:'会员入口'
 }]
 export default class Nav extends Component {
   componentDidMount () {

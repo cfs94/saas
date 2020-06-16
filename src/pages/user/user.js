@@ -6,12 +6,17 @@ import { set as setGlobalData, get as getGlobalData } from '@utils/global_data.j
 import phoneImg from './assets/phone.png'
 import companyImg from './assets/company.png'
 import arrowImg from '@assets/arrow.png'
-import setImg from './assets/setting.png'
-import orderImg from './assets/order.png'
-import aboutImg from './assets/about.png'
-import logoutImg from './assets/logout.png'
-import kefuImg from './assets/kefu.png'
+import setImg from './assets/n_set.png'
+import orderImg from './assets/mylist.png'
+import aboutImg from './assets/n_about.png'
+import logoutImg from './assets/n_logout.png'
+import kefuImg from './assets/chat.png'
 import getM from '@assets/getm.png'
+import dIcon from '@assets/diamonicon.png'
+import diaIcon from '@assets/diamon_icon.png'
+import bIcon from './assets/bIcon.png'
+import b_Icon from './assets/b_Icon.png'
+import no_m from './assets/no_m.png'
 import './user.scss'
 import MemberPackage from '../memberpackage'
 let Session = require('@utils/first-login/session')
@@ -40,11 +45,12 @@ class User extends Component {
 				if (res.data.state == 1) {
 					setGlobalData('info',res.data.data.info)
 					setGlobalData('avatarUrl',res.data.data.avatarUrl)
-					console.log(res.data)
+					// console.log(res.data)
 					this.setState({
 						info:res.data.data.info,
 						avatarUrl:res.data.data.avatarUrl,
 						memberType:res.data.data.info.app_name,
+						// memberType:'黑钻',
 						endTime:res.data.data.info.service_end
 					})
 				}
@@ -76,9 +82,6 @@ class User extends Component {
 	}
 
 	
-	
-
-
 	componentDidShow () {
 		this.getPersonInfo()
 	}
@@ -108,11 +111,11 @@ class User extends Component {
 					</View>
 				</View>
 
-				<View className='package-warp'>
+				<View className={memberType=='钻石会员'?"package-warp":'black-warp'}>
 					<View className='member-info'>
-						<View>
+						<View className='member-t'>
 							<Text className='member-type'>{memberType}</Text>
-							<Image className='member-icon'></Image>
+							<Image className='member-icon' src={memberType=='钻石会员'?dIcon:bIcon}></Image>
 						</View>
 						<View className='end-time'>
 							<Text>到期时间：</Text>
@@ -122,7 +125,9 @@ class User extends Component {
 					<View className='look-over'>
 						查看权益
 					</View>
+					<Image src={memberType=='钻石会员'?diaIcon:b_Icon} className='dia-icon'></Image>
 				</View>
+
 
 				<Image className='get-member' src={getM}></Image>
 
@@ -153,8 +158,7 @@ class User extends Component {
 						<Image className='img' src={arrowImg} />
 					</View>
 				</View>
-				
-					
+									
 				<MemberPackage getInfo={this.getPersonInfo.bind(this)}/>
 				<View className='get-btn'>立即享受会员特权</View>
 			</View>

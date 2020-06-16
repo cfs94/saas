@@ -11,12 +11,14 @@
     }
     .packagetitle{
         display: inline-block;
-        width:427px;
-        font-size:36px;
+        
+        font-size:30px;
         font-family:JZhongYi;
-        margin: 62px;
+        // margin: 62px;
+        margin-top: 10px;
+        margin-bottom: 62px;
         line-height: 50px;
-        font-weight:400;
+        font-weight:600;
         color:rgba(255,65,20,1);
     }
     .diamondmember{
@@ -25,21 +27,49 @@
         flex-direction: column;
         align-items: center;
         .diamondbox{
-            width:540px;
-            height:200px;
-            background:linear-gradient(-90deg,rgba(255,197,197,1),rgba(255,235,235,1));
-            box-shadow:0px 9px 10px 0px rgba(252,78,50,0.09);
-            border-radius:12px;
+            width:560px;
+            height:219px;
+            background: url('../user/assets/z_background.png') center;
+            background-size: 100%100%;
             display: flex;
-            flex-direction: column;
-            span{
-                font-size:24px;
-                font-family:AlibabaPuHuiTi;
-                font-weight:400;
-                color:rgba(255,69,69,1);
+            flex-direction: row;
+            align-items: center;
+            padding-left: 30px;
+            padding-right: 80px;
+            padding-bottom: 30px;
+            box-sizing: border-box;
+            justify-content: space-between;
+            .payicon{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .iconimg{
+                    width: 54px;
+                    height: 50px;
+                }
+                span{
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(252,78,51,1);
+                    margin-top: 10px;
+                }
             }
-            span:nth-child(2){
-                text-decoration:line-through;
+            .paydiv{
+                display: flex;
+                flex-direction: column;
+                span{
+                    font-size:24px;
+                    font-family:AlibabaPuHuiTi;
+                    font-weight:400;
+                    color:rgba(255,69,69,1);
+                    i{
+                        font-size: 60px;
+                    }
+                }
+                span:nth-child(2){
+                    text-decoration:line-through;
+                }
             }
         }
         .diamonbtn{
@@ -65,23 +95,53 @@
         .blackbox{
             width:540px;
             height:200px;
-            background:linear-gradient(-90deg,rgba(48,48,48,1),rgba(126,126,126,1));
-            box-shadow:0px 1px 10px 0px rgba(255,167,104,0.34);
-            border-radius:12px;
+            background: url('../user/assets/b_ground.png') center;
+            background-size: 100%100%;
             display: flex;
-            flex-direction: column;
-           span{
-            font-size:24px;
-            font-family:AlibabaPuHuiTi;
-            font-weight:400;
-            color:rgba(255,255,255,1);
-           }
-           span:nth-child(2){
-            text-decoration:line-through;
-           }
-           span:nth-child(3){
-            color:rgba(255,203,89,1);
-           }
+            flex-direction: row;
+            align-items: center;
+            padding-left: 30px;
+            padding-right: 80px;
+            padding-bottom: 20px;
+            box-sizing: border-box;
+            justify-content: space-between;
+
+            .payicon{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .iconimg{
+                    width: 54px;
+                    height: 50px;
+                }
+                span{
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(255,255,255,1);
+                    margin-top: 10px;
+                }
+            }
+            .paydiv{
+                display: flex;
+                flex-direction: column;
+                span{
+                    font-size:24px;
+                    font-family:AlibabaPuHuiTi;
+                    font-weight:400;
+                    color:rgba(255,255,255,1);
+                    i{
+                        font-size: 60px;
+                    }
+                   }
+                   span:nth-child(2){
+                    text-decoration:line-through;
+                   }
+                   span:nth-child(3){
+                    color:rgba(255,203,89,1);
+                   }
+            }
+         
             
         }
         .blackbtn{
