@@ -34,6 +34,7 @@ class App extends Component {
       'pages/trade/choose-per',
       
       'pages/user/about-us',
+      'pages/user/member',
       'pages/account/account',
       'pages/account/per-data',
       'pages/comment/comment',

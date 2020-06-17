@@ -81,7 +81,9 @@ class User extends Component {
 		
 	}
 
-	
+	toBuyMember(){
+		Taro.navigateTo({url:'/pages/user/member'})
+	}
 	
 	componentDidShow () {
 		this.getPersonInfo()
@@ -161,7 +163,7 @@ class User extends Component {
 				</View>
 									
 				<MemberPackage getInfo={this.getPersonInfo.bind(this)}/>
-				<View className='get-btn'>立即享受会员特权</View>
+				<View className='get-btn' onClick={this.toBuyMember}>立即享受会员特权</View>
 			</View>
 		)
 	}
