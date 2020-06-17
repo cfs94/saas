@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index'
-import { LOGIN } from './service/api' 
+import { LOGIN } from './service/api'
 let qcloud = require('./utils/index')
 
 import './app.scss'
@@ -15,7 +15,6 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/user/user',
       'pages/first-login/first-login',
       'pages/register/register',
       'pages/login/login',
@@ -32,7 +31,7 @@ class App extends Component {
       'pages/forget-pwd/forget-pwdy',
       'pages/trade/trade',
       'pages/trade/choose-per',
-      
+      'pages/user/user',
       'pages/user/about-us',
       'pages/user/member',
       'pages/account/account',
@@ -46,26 +45,28 @@ class App extends Component {
       'pages/spread/spread',
       'pages/data/data'
     ],
+
+
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#3ba9db',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'white',
-      navigationStyle:'default'
+      navigationStyle: 'default'
     },
     tabBar: {
-      selectedColor:'#3ba9db',
+      selectedColor: '#3ba9db',
       list: [{
         pagePath: "pages/index/index",
         iconPath: "./assets/tab-bar/index.png",
         selectedIconPath: "./assets/tab-bar/indexs.png",
         text: "首页"
-      },{
+      }, {
         pagePath: "pages/trade/trade",
         iconPath: "./assets/tab-bar/sj.png",
         selectedIconPath: "./assets/tab-bar/sjs.png",
         text: "商机"
-      },{
+      }, {
         pagePath: "pages/user/user",
         iconPath: "./assets/tab-bar/my.png",
         selectedIconPath: "./assets/tab-bar/mys.png",
@@ -73,22 +74,22 @@ class App extends Component {
       }]
     }
   }
-  componentWillMount () {
+  componentWillMount() {
     qcloud.setLoginUrl(LOGIN)
   }
-  componentDidMount () {}
+  componentDidMount() { }
 
-  componentDidShow () {}
+  componentDidShow() { }
 
-  componentDidHide () {}
+  componentDidHide() { }
 
-  componentDidCatchError () {}
+  componentDidCatchError() { }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
-        <Index />
+      <Index />
     )
   }
 }

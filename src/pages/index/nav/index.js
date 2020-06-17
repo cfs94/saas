@@ -68,6 +68,8 @@ export default class Nav extends Component {
       Taro.navigateTo({url:'/pages/spread/spread'})
     } else if (id == 7) {
       Taro.navigateTo({url:'/pages/data/data'})
+    } else if(id== 8){
+      Taro.navigateTo({url:'/pages/user/member'})
     }
 	}
 	render () {

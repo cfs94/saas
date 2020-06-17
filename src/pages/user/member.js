@@ -139,7 +139,7 @@ export default class BuyMember extends Component {
             <View className='buymembermain'>
                 <View className='buytop'></View>
                 <View className='buytitle'>
-                    <span className=''>马可会员<i>1折</i>购，原价<i>23990</i>现价<i>799</i>，仅限该行业的前<i>10名</i>！</span>
+                    <span className=''>马可会员<i>1折</i>购，原价<i>23990</i>现价<i>{diamonPrice}</i>，仅限该行业的前<i>10名</i>！</span>
                 </View>
 
                 <View className='memberbox'>
