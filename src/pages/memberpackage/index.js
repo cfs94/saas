@@ -4,6 +4,7 @@ import { BUY_MEMBER, CHECK_MEMBER ,MEMBER_PRICE} from '@service/api'
 import api from '@service/ask'
 import diaIcon from '../user/assets/m_z.png'
 import bIcon from '../user/assets/b_m_z.png'
+import topIcon from '../user/assets/top.png'
 import './index.scss'
 
 class MemberPackage extends Component {
@@ -57,15 +58,20 @@ class MemberPackage extends Component {
             sp_code: ''
         }
         api.api(BUY_MEMBER, params).then(res => {
+            let that = this
             if (res.data.state == 1) {
+                this.setState({
+                    order_id: res.data.data.order_id
+                })
                 Taro.requestPayment({
                     timeStamp: res.data.data.timeStamp,
                     nonceStr: res.data.data.nonceStr,
                     package: res.data.data.package,
                     signType: res.data.data.signType,
                     paySign: res.data.data.paySign,
-                    success(res) {
-                        Taro.navigateTo({ url: '/pages/result-pay/result-pay?type=0' })
+                    success() {
+                        that.checkOrder(res.data.data.order_id)
+                        // Taro.navigateTo({ url: '/pages/result-pay/result-pay?type=0' })
                     },
                     fail(res) {
                         // Taro.navigateTo({ url: `/pages/result-pay/result-pay?type=1&typeService=2&orderId=${id}` })
@@ -88,6 +94,7 @@ class MemberPackage extends Component {
             // console.log(res,'检查')
             if (res.data.state == 1) {
                 this.setState({
+                    showTip: true,
                     payflag: true
                 })
                 return false;
@@ -116,7 +123,9 @@ class MemberPackage extends Component {
                     马可波罗网和百度、搜狗、360、今日头条，强强联手搜索引擎，收录排名领先99%同类产品
                 </Text>
                 <View className='diamondmember'>
+                   
                     <View className='diamondbox'>
+                        <Image src={topIcon} className='topicon'></Image>
                         <View className='payicon'>
                             <Image src={diaIcon} className='iconimg'></Image>
                             <span>钻石会员</span>

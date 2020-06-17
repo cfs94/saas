@@ -39,6 +39,14 @@
             padding-bottom: 30px;
             box-sizing: border-box;
             justify-content: space-between;
+            position: relative;
+            .topicon{
+                width:86px;
+                height:36px;
+                position: absolute;
+                top: -13px;
+                left: -30px;
+            }
             .payicon{
                 display: flex;
                 flex-direction: column;

@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button } from '@tarojs/components'
-import { PERSON_INFO,LOGOUT } from '@service/api'
+import { PERSON_INFO, LOGOUT } from '@service/api'
 import api from '@service/ask'
 import { set as setGlobalData, get as getGlobalData } from '@utils/global_data.js'
 import phoneImg from './assets/phone.png'
@@ -23,54 +23,60 @@ let Session = require('@utils/first-login/session')
 
 class User extends Component {
 	config = {
-    navigationBarTitleText: '用户中心'
+		navigationBarTitleText: '用户中心'
 	}
 	state = {
-		page:1
+		page: 1,
+		memberflag:false
 	}
-	jumpAboutUs () {
-		Taro.navigateTo({url:'/pages/user/about-us'})
+	jumpAboutUs() {
+		Taro.navigateTo({ url: '/pages/user/about-us' })
 	}
-	jumpAccount () {
-		Taro.navigateTo({url:'/pages/account/account'})
+	jumpAccount() {
+		Taro.navigateTo({ url: '/pages/account/account' })
 	}
-	jumpPerData () {
-		Taro.navigateTo({url:'/pages/account/per-data'})
+	jumpPerData() {
+		Taro.navigateTo({ url: '/pages/account/per-data' })
 	}
-	jumpOrder () {
-		Taro.navigateTo({url:'/pages/order/order'})
+	jumpOrder() {
+		Taro.navigateTo({ url: '/pages/order/order' })
 	}
-	getPersonInfo () {
+	getPersonInfo() {
 		api.api(PERSON_INFO).then(res => {
-				if (res.data.state == 1) {
-					setGlobalData('info',res.data.data.info)
-					setGlobalData('avatarUrl',res.data.data.avatarUrl)
-					// console.log(res.data)
+			if (res.data.state == 1) {
+				setGlobalData('info', res.data.data.info)
+				setGlobalData('avatarUrl', res.data.data.avatarUrl)
+				// console.log(res.data)
+				//判断是否是会员
+				if(res.data.data.info.app_name){
 					this.setState({
-						info:res.data.data.info,
-						avatarUrl:res.data.data.avatarUrl,
-						memberType:res.data.data.info.app_name,
-						// memberType:'黑钻',
-						endTime:res.data.data.info.service_end
+						memberflag:true
 					})
 				}
-			})
+				this.setState({
+					info: res.data.data.info,
+					avatarUrl: res.data.data.avatarUrl,
+					memberType: res.data.data.info.app_name,
+					endTime: res.data.data.info.service_end
+				})
+			}
+		})
 	}
-	logout () {
+	logout() {
 		Taro.showModal({
-			title:'温馨提示',
-			content:'您确认要退出登录吗',
-			success:function (res) {
+			title: '温馨提示',
+			content: '您确认要退出登录吗',
+			success: function (res) {
 				if (res.confirm) {
 					api.api(LOGOUT).then(res => {
 						if (res.data.state == 1) {
-							Taro.showToast({title:'退出登录成功',icon:'none'})
+							Taro.showToast({ title: '退出登录成功', icon: 'none' })
 							// Session.clear()
 							setTimeout(() => {
-								Taro.navigateTo({url:'/pages/login/login'})
-							},500)
+								Taro.navigateTo({ url: '/pages/login/login' })
+							}, 500)
 						} else {
-							Taro.showToast({title:res.data.msg,icon:'none'})
+							Taro.showToast({ title: res.data.msg, icon: 'none' })
 						}
 					})
 				} else if (res.cancel) {
@@ -78,19 +84,19 @@ class User extends Component {
 				}
 			}
 		})
-		
+
 	}
 
-	toBuyMember(){
-		Taro.navigateTo({url:'/pages/user/member'})
+	toBuyMember() {
+		Taro.navigateTo({ url: '/pages/user/member' })
 	}
-	
-	componentDidShow () {
+
+	componentDidShow() {
 		this.getPersonInfo()
 	}
-  	onShareAppMessage(obj) {}
-	render () {
-		const { info, avatarUrl ,memberType,endTime} = this.state
+	onShareAppMessage(obj) { }
+	render() {
+		const { info, avatarUrl, memberType, endTime } = this.state
 		return (
 			<View className='user'>
 				<View className='user-top' onClick={this.jumpPerData}>
@@ -114,7 +120,7 @@ class User extends Component {
 					</View>
 				</View>
 
-				<View className={memberType=='钻石会员'?"package-warp":'black-warp'}>
+				{this.state.memberflag ? <View className={memberType=='钻石会员'?"package-warp":'black-warp'}>
 					<View className='member-info'>
 						<View className='member-t'>
 							<Text className='member-type'>{memberType}</Text>
@@ -129,10 +135,20 @@ class User extends Component {
 						查看权益
 					</View>
 					<Image src={memberType=='钻石会员'?diaIcon:b_Icon} className='dia-icon'></Image>
-				</View>
+				</View>:
+				<View className='nomember-warp'>
+					<View className='no-info'>
+						<span>您还不是会员</span>
+						<span>会员享百度等搜索引擎优先收录排名</span>
+					</View>
+					<View className='to-m'>
+						成为会员
+					</View>
+					<Image src={no_m} className='no-icon'></Image>
+				</View>}
 
 
-				<Image className='get-member' src={getM}></Image>
+				<Image className='get-member' src={getM} onClick={this.toBuyMember}></Image>
 
 				<View className='item-wrap'>
 					<View className='item' onClick={this.jumpAccount}>
@@ -161,8 +177,8 @@ class User extends Component {
 						<Image className='img' src={arrowImg} />
 					</View>
 				</View>
-									
-				<MemberPackage getInfo={this.getPersonInfo.bind(this)}/>
+
+				<MemberPackage getInfo={this.getPersonInfo.bind(this)} />
 				<View className='get-btn' onClick={this.toBuyMember}>立即享受会员特权</View>
 			</View>
 		)

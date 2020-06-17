@@ -172,6 +172,58 @@ page {
 		}
 	}
 
+	.nomember-warp{
+		width:680px;
+		height:160px;
+		background:linear-gradient(-90deg,rgba(48,48,48,1),rgba(126,126,126,1));
+		box-shadow:0px 1px 10px 0px rgba(255,167,104,0.34);
+		
+		border-radius:12px;
+		box-sizing: border-box;
+		display: flex;
+		// justify-content: center;
+		padding: 0 50px;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		.no-info{
+			display: flex;
+			flex-direction: column;
+			span:nth-child(1){
+				font-size:30px;
+				font-family:PingFang SC;
+				font-weight:500;
+				color:rgba(255,255,255,1);
+			}
+			span:nth-child(2){
+				margin-top: 20px;
+				font-size:24px;
+				font-family:Alibaba PuHuiTi;
+				font-weight:400;
+				color:rgba(250,194,61,1);
+			}
+		}
+		.to-m{
+			width:140px;
+			height:40px;
+			line-height: 40px;
+			text-align: center;
+			background:linear-gradient(-40deg,rgba(220,167,73,1) 0%,rgba(255,194,85,1) 100%);
+			border-radius:12px;
+			font-size:24px;
+			font-family:Microsoft YaHei;
+			font-weight:400;
+			color:rgba(131,78,0,1);
+			z-index: 10;
+		}
+		.no-icon{
+			width: 97px;
+			height: 97px;
+			position: absolute;
+			right: 5px;
+			top: 45px;
+		}
+	}
 
 
 	.get-member{
