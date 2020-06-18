@@ -52,3 +52,12 @@ export const CHECK_MEMBER = `${host}/saas/vip/check_order.php`
 
 //获取套餐价格
 export const MEMBER_PRICE = `${host}/saas/vip/app.php`
+
+
+//推广分销
+export const PROMOTION_LIST = `${host}/saas/vip/my_spread.php` //推广接口
+export const EXCHANGE_LIST =`${host}/saas/vip/my_exchange.php` //兑换列表
+export const EXCHANGE_SUBMIT = `${host}/saas/vip/my_receive_add.php`//兑换提交
+export const EXCHANGE_DETAIL = `${host}/saas/vip/my_exchange_detail.php`//兑换详情
+export const EXCHANGE_INFO = `${host}/saas/vip/my_info.php` //兑换信息
+export const CHECK_CODE = `${host}/saas/vip/get_check_code.php` //获取兑换码

@@ -1,0 +1,128 @@
+page{
+    padding: 0;
+    .submitmain{
+        padding-bottom: 50px;
+        .personinfo{
+            padding-top: 80px;
+            .persontitle{
+                margin-left: 30px;
+                margin-bottom: 30px;
+                font-size:36px;
+                font-family:PingFang SC;
+                font-weight:700;
+                color:rgba(51,51,51,1);
+            }
+            .personitem{
+                padding: 0 30px;
+                display: flex;
+                height: 108px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid #EFEFEF;
+                text{
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(101,101,101,1);
+                }
+                input{
+                    width: 340px;
+                    text-align: right;
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(153,153,153,1);
+                }
+                span{
+                    width: 340px;
+                    text-align: right;
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(153,153,153,1);
+                }
+                .getcode{
+                    width:200px;
+                    height:50px;
+                    line-height: 50px;
+                    text-align: center;
+                    font-size:28px;
+                    font-family:Alibaba PuHuiTi;
+                    font-weight:400;
+                    color:rgba(255,255,255,1);
+                    background:rgba(0,126,255,1);
+                    border-radius:25px;
+                }
+            }
+        }
+        .companyinfo{
+            .comtitle{
+                margin-left: 30px;
+                margin-bottom: 30px;
+                margin-top: 105px;
+                font-size:36px;
+                font-family:PingFang SC;
+                font-weight:700;
+                color:rgba(51,51,51,1);
+            }
+            .comitem{
+                padding: 0 30px;
+                display: flex;
+                height: 108px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid #EFEFEF;
+                text{
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(101,101,101,1);
+                }
+                span{
+                    width: 340px;
+                    text-align: right;
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(153,153,153,1);
+                }
+                
+            }
+            .imgitem{
+                padding-left: 30px;
+                display: flex;
+                flex-direction: row;
+                padding-top: 50px;
+                text{
+                    font-size:30px;
+                    font-family:PingFang SC;
+                    font-weight:400;
+                    color:rgba(101,101,101,1);
+                }
+                .comimg{
+                    width:260px;
+                    height:200px;
+                    background:rgba(239,239,239,1);
+                    border:1px solid rgba(239,239,239,1);
+                    margin-left: 40px;
+                    margin-top: 50px;
+                }
+            }
+        }
+        .subtn{
+            width:560px;
+            height:60px;
+            line-height: 60px;
+            text-align: center;
+            margin: 72px auto;
+            background:rgba(0,126,255,1);
+            border-radius:30px;
+            font-size:30px;
+            font-family:Alibaba PuHuiTi;
+            font-weight:400;
+            color:rgba(255,255,255,1);
+        }
+    }
+}
