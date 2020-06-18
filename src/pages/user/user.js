@@ -17,6 +17,7 @@ import diaIcon from '@assets/diamon_icon.png'
 import bIcon from './assets/bIcon.png'
 import b_Icon from './assets/b_Icon.png'
 import no_m from './assets/no_m.png'
+import n_points from './assets/n_points.png'
 import './user.scss'
 import MemberPackage from '../memberpackage'
 let Session = require('@utils/first-login/session')
@@ -27,8 +28,13 @@ class User extends Component {
 	}
 	state = {
 		page: 1,
-		memberflag:false
+		memberflag: false
 	}
+
+	toMyPoints(){
+		Taro.navigateTo({ url: '/pages/user/promotionlist' })
+	}
+
 	jumpAboutUs() {
 		Taro.navigateTo({ url: '/pages/user/about-us' })
 	}
@@ -48,9 +54,9 @@ class User extends Component {
 				setGlobalData('avatarUrl', res.data.data.avatarUrl)
 				// console.log(res.data)
 				//判断是否是会员
-				if(res.data.data.info.app_name){
+				if (res.data.data.info.app_name) {
 					this.setState({
-						memberflag:true
+						memberflag: true
 					})
 				}
 				this.setState({
@@ -120,11 +126,11 @@ class User extends Component {
 					</View>
 				</View>
 
-				{this.state.memberflag ? <View className={memberType=='钻石会员'?"package-warp":'black-warp'}>
+				{this.state.memberflag ? <View className={memberType == '钻石会员' ? "package-warp" : 'black-warp'}>
 					<View className='member-info'>
 						<View className='member-t'>
 							<Text className='member-type'>{memberType}</Text>
-							<Image className='member-icon' src={memberType=='钻石会员'?dIcon:bIcon}></Image>
+							<Image className='member-icon' src={memberType == '钻石会员' ? dIcon : bIcon}></Image>
 						</View>
 						<View className='end-time'>
 							<Text>到期时间：</Text>
@@ -134,23 +140,28 @@ class User extends Component {
 					<View className='look-over'>
 						查看权益
 					</View>
-					<Image src={memberType=='钻石会员'?diaIcon:b_Icon} className='dia-icon'></Image>
-				</View>:
-				<View className='nomember-warp'>
-					<View className='no-info'>
-						<span>您还不是会员</span>
-						<span>会员享百度等搜索引擎优先收录排名</span>
+					<Image src={memberType == '钻石会员' ? diaIcon : b_Icon} className='dia-icon'></Image>
+				</View> :
+					<View className='nomember-warp'>
+						<View className='no-info'>
+							<span>您还不是会员</span>
+							<span>会员享百度等搜索引擎优先收录排名</span>
+						</View>
+						<View className='to-m'>
+							成为会员
 					</View>
-					<View className='to-m'>
-						成为会员
-					</View>
-					<Image src={no_m} className='no-icon'></Image>
-				</View>}
+						<Image src={no_m} className='no-icon'></Image>
+					</View>}
 
 
 				<Image className='get-member' src={getM} onClick={this.toBuyMember}></Image>
 
 				<View className='item-wrap'>
+					<View className='item' onClick={this.toMyPoints}>
+						<Image className='imgs' src={n_points} />
+						<Text className='title'>我的积分</Text>
+						<Image className='img' src={arrowImg} />
+					</View>
 					<View className='item' onClick={this.jumpAccount}>
 						<Image className='imgs' src={setImg} />
 						<Text className='title'>帐号管理</Text>

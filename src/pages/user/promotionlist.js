@@ -27,7 +27,7 @@ export default class PromotionList extends Component {
         api.api(PROMOTION_LIST, params).then(res => {
             if (res.data.state == 0) {
                 let val = res.data.data
-                console.log(val)
+                // console.log(val)
                 this.setState({
                     userAvatar: val.avatarUrl,
                     userName: val.nickname,
@@ -116,6 +116,11 @@ export default class PromotionList extends Component {
         Taro.navigateTo({ url: '/pages/user/submitcheck/index' })
     }
 
+    //去推广按钮
+    toPromotion(){
+        Taro.navigateTo({ url: '/pages/user/promotiontip/index' })
+    }
+
 
     render() {
 
@@ -158,7 +163,7 @@ export default class PromotionList extends Component {
                     <View className='toppoints'>总积分：{userSpread}</View>
                     <View className='topcode'>
                         <View className='codenum'>推广码：{userCode}</View>
-                        <View className='codebtn'>去推广</View>
+                        <View className='codebtn' onClick={this.toPromotion}>去推广</View>
                     </View>
 
                 </View>
