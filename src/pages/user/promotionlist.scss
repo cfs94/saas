@@ -175,6 +175,17 @@
                 }
             }
         }
+        .pageitem{
+            width: 480px;
+            font-size: 28rpx;
+            font-family: Alibaba PuHuiTi;
+            font-weight: 400;
+            color: #656565;
+            margin: 50px auto;
+            text{
+                margin-right: 35px;
+            }
+        }
     }
     .checktip{
         position: fixed;

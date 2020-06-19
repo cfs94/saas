@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button } from '@tarojs/components'
-
 import api from '@service/ask'
+import { MEMBER_PRICE} from '@service/api'
 import tipBanner from '../assets/tip_banner.png'
 import './index.scss'
 
@@ -18,7 +18,7 @@ export default class PromotionTip extends Component {
                 <Image src={tipBanner} className='topbanner'></Image>
                 <View className='codebox'>
                     <span>您的推广码已生成：</span>
-                    <span>121445</span>
+                    <span>{this.state.sp_code}</span>
                     <span>点击复制</span>
                     <Button openType='share' className='sharebtn'>去赚钱</Button>
                 </View>
@@ -47,16 +47,38 @@ export default class PromotionTip extends Component {
         )
     }
 
-        onShareAppMessage (res) {
+    onShareAppMessage (res) {
         if (res.from === 'button') {
          
         }
         return {
           title: '转发即可获得500元现金',
-          path: '/page/user/promotiontip/index',
+          path: '/page/user/member?sp_code='+this.state.sp_code,
           imageUrl:tipBanner
         }
-      }
+    }
+
+
+
+    componentDidShow(){
+        this.getPrice()
+    }
+
+
+    //获取套餐信息
+    getPrice(){
+        api.api(MEMBER_PRICE).then(res=>{
+            let diamonPrice = res.data.data.app_info['10095'].price
+            let blackPrice = res.data.data.app_info['10097'].price
+            let sp_code = res.data.data.sp_code
+            console.log(sp_code)
+            this.setState({
+                diamonPrice:diamonPrice,
+                blackPrice:blackPrice,
+                sp_code:sp_code
+            })
+        })
+    }
    
 
 

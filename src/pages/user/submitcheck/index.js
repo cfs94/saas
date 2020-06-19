@@ -13,7 +13,8 @@ export default class SubmitCheck extends Component {
 
     state = {
         tipflag: false,
-        codeflag:false
+        codeflag:false,
+        codemsg:false
     }
 
     //获取兑换信息
@@ -54,9 +55,11 @@ export default class SubmitCheck extends Component {
     //获取验证码
     phoneCode() {
         api.api(CHECK_CODE).then(res => {
-            if(res.data.state == 0){
-                let val = res.data.data
-                console.log(val)
+            let val = res.data
+            if(val.state == 1){
+                this.setState({
+                    
+                })
             }
         })
     }
@@ -72,13 +75,18 @@ export default class SubmitCheck extends Component {
         this.getExchangeInfo()
     }
 
-
-    code(){
-
+    //输入验证码
+    codeChange(e){
+        console.log(e.target.value)
+        this.setState({
+            pCode:e.target.value
+        })
     }
 
+
+
     render() {
-        let { infoName, infoCard, infoPhone, companyName, companyNum, companyImg ,pCode} = this.state
+        let { infoName, infoCard, infoPhone, companyName, companyNum, companyImg } = this.state
 
         return (<View className='submitmain'>
             <View className='personinfo'>
@@ -94,11 +102,14 @@ export default class SubmitCheck extends Component {
                 <View className='personitem'>
                     <Text>手机号</Text>
                     <span>{infoPhone}</span>
-                    <Text className='getcode' onClick={this.phoneCode}>获取验证码</Text>
+                    {this.state.codeflag?
+                    <Text className='tipmsg'>{this.state.codemsg?<span>获取成功,五分钟有效</span>:<span>获取失败,五分钟后再试</span>}</Text>
+                    :<Text className='getcode' onClick={this.phoneCode}>获取验证码</Text>
+                    }
                 </View>
                 <View className='personitem'>
                     <Text>验证码</Text>
-                    <span>{pCode}</span>
+                    <Input onInput={this.codeChange}></Input>
                 </View>
             </View>
 

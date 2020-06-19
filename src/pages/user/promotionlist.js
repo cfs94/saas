@@ -14,7 +14,10 @@ export default class PromotionList extends Component {
         showtip: false,
         passflag: false,
         proList: [],
-        exchangeList: []
+        exchangeList: [],
+        totalPage: null,
+        numPag: 1,
+        pageflag:false
     }
 
 
@@ -28,12 +31,18 @@ export default class PromotionList extends Component {
             if (res.data.state == 0) {
                 let val = res.data.data
                 // console.log(val)
+                if(val.order_list){
+                    this.setState({
+                        pageflag:true
+                    })
+                }
                 this.setState({
                     userAvatar: val.avatarUrl,
                     userName: val.nickname,
                     userCode: val.promotion_code,
                     userSpread: val.spread,
-                    proList: val.order_list
+                    proList: val.order_list,
+                    totalPage: val.total
                 })
             }
         })
@@ -62,8 +71,14 @@ export default class PromotionList extends Component {
         api.api(EXCHANGE_LIST, params).then(res => {
             if (res.data.state == 0) {
                 let val = res.data.data
+                if(val.result){
+                    this.setState({
+                        pageflag:true
+                    })
+                }
                 this.setState({
-                    exchangeList: val.result
+                    exchangeList: val.result,
+                    totalPage: val.total
                 })
 
             }
@@ -85,19 +100,19 @@ export default class PromotionList extends Component {
                 if (val.status == '0') {
                     this.setState({
                         passflag: false,
-                        noMsg:val.msg
+                        noMsg: val.msg
                     })
                 }
                 if (val.status == '1') {
                     this.setState({
                         passflag: true,
-                        cardID:val.id_card
+                        cardID: val.id_card
                     })
                 }
                 if (val.status == '2') {
                     this.setState({
                         passflag: false,
-                        noMsg:val.msg
+                        noMsg: val.msg
                     })
                 }
             }
@@ -112,20 +127,110 @@ export default class PromotionList extends Component {
     }
 
     //去兑换按钮
-    toCheck(){
+    toCheck() {
         Taro.navigateTo({ url: '/pages/user/submitcheck/index' })
     }
 
     //去推广按钮
-    toPromotion(){
+    toPromotion() {
         Taro.navigateTo({ url: '/pages/user/promotiontip/index' })
     }
+
+
+    //上一页
+    lastPage() {
+        let { totalPage, showflag,numPag } = this.state
+        if (totalPage == 1) {
+            return false
+        }
+        if (showflag) {
+            this.setState({
+                numPag: --numPag
+            })
+            let params = {
+                page: numPag
+            }
+
+            api.api(PROMOTION_LIST, params).then(res => {
+                if (res.data.state == 0) {
+                    let val = res.data.data
+                    this.setState({
+                        proList: val.order_list,
+                        totalPage: val.total
+                    })
+                }
+            })
+        } else {
+            this.setState({
+                numPag: --numPag
+            })
+            let params = {
+                page: numPag
+            }
+
+            api.api(EXCHANGE_LIST, params).then(res => {
+                if (res.data.state == 0) {
+                    let val = res.data.data
+                    this.setState({
+                        exchangeList: val.result,
+                        totalPage: val.total
+                    })
+                }
+            })
+        }
+
+    }
+    //下一页
+    nextPage() {
+        let { totalPage, showflag ,numPag} = this.state
+        if (totalPage == numPag) {
+            return false
+        }
+        if (showflag) {
+            this.setState({
+                numPag: ++numPag
+            })
+            let params = {
+                page: numPag
+            }
+
+            api.api(PROMOTION_LIST, params).then(res => {
+                if (res.data.state == 0) {
+                    let val = res.data.data
+                    this.setState({
+                        proList: val.order_list,
+                        totalPage: val.total
+                    })
+                }
+            })
+        } else {
+            this.setState({
+                numPag: ++numPag
+            })
+            let params = {
+                page: numPag
+            }
+
+            api.api(EXCHANGE_LIST, params).then(res => {
+                if (res.data.state == 0) {
+                    let val = res.data.data
+                    this.setState({
+                        exchangeList: val.result,
+                        totalPage: val.total
+                    })
+                }
+            })
+        }
+
+    }
+
+
 
 
     render() {
 
 
-        let { userAvatar, userName, userCode, userSpread, proList, exchangeList ,cardID,noMsg} = this.state
+        let { userAvatar, userName, userCode, userSpread, proList, exchangeList, cardID, noMsg } = this.state
 
         const porView = proList.map((item, index) => {
             return <View key={index} className='proitem'>
@@ -185,6 +290,12 @@ export default class PromotionList extends Component {
                         {showflag ? porView : exchangeView}
                     </View>
 
+                    {this.state.pageflag?<View className='pageitem'>
+                        <Text>共{this.state.totalPage}页</Text>
+                        <Text>第{this.state.numPag}页</Text>
+                        <Text onClick={this.lastPage}>上一页</Text>
+                        <Text onClick={this.nextPage}>下一页</Text>
+                    </View>:''}
 
                 </View>
 
@@ -192,16 +303,16 @@ export default class PromotionList extends Component {
                 {this.state.showtip ? <View className='checktip'>
                     <View className='tipbox'>
 
-                        {this.state.passflag ? 
-                        <View className='okbox'>
-                            <View className='passok'>您的积分兑换京东购物卡申请已通过</View>
-                            <View className='passcard'>您价值800元的京东购物卡兑换码为:</View>
-                            <View className='cnum'>{cardID}</View>
-                        </View> : 
-                        <View className='nobox'>
+                        {this.state.passflag ?
+                            <View className='okbox'>
+                                <View className='passok'>您的积分兑换京东购物卡申请已通过</View>
+                                <View className='passcard'>您价值800元的京东购物卡兑换码为:</View>
+                                <View className='cnum'>{cardID}</View>
+                            </View> :
+                            <View className='nobox'>
                                 <View className='nopass'>您的积分兑换京东购物卡审核未通过</View>
                                 <View className='nomsg'>原因：{noMsg}</View>
-                        </View>}
+                            </View>}
 
                         <Text className='passbtn' onClick={this.closeTip}>确定</Text>
 
