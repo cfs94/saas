@@ -94,7 +94,7 @@ class User extends Component {
 	}
 
 	toBuyMember() {
-		Taro.navigateTo({ url: '/pages/user/promotionlist' })
+		Taro.navigateTo({ url: '/pages/user/member' })
 	}
 
 	componentDidShow() {

@@ -15,7 +15,7 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/user/promotionlist',
+      'pages/user/user',
       'pages/first-login/first-login',
       'pages/register/register',
       'pages/login/login',
@@ -32,10 +32,10 @@ class App extends Component {
       'pages/forget-pwd/forget-pwdy',
       'pages/trade/trade',
       'pages/trade/choose-per',
-      'pages/user/user',
+      
       'pages/user/about-us',
       'pages/user/member',
-      
+      'pages/user/promotionlist',
       'pages/user/submitcheck/index',
       'pages/user/promotiontip/index',
       'pages/account/account',

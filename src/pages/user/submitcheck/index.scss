@@ -57,10 +57,13 @@ page{
                 .tipmsg{
                     width: 200px;
                     text-align: center;
+                    
+                    text{
                     color: red;
                     font-size: 30px;
                     font-family: PingFang SC;
                     font-weight: 400;
+                    }
 
                 }
             }
@@ -154,28 +157,53 @@ page{
                     width: 380px;
                     height: 350px;
                 }
-                .boxtitle{
-                    font-size:32px;
-                    font-family:Microsoft YaHei;
-                    font-weight:400;
-                    color:rgba(51,51,51,1);
-                    margin-bottom: 10px;
+                .okbox{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .boxtitle{
+                        font-size:32px;
+                        font-family:Microsoft YaHei;
+                        font-weight:400;
+                        color:rgba(51,51,51,1);
+                        margin-bottom: 10px;
+                    }
+                    .boxtime{
+                        font-size:28px;
+                        font-family:Microsoft YaHei;
+                        font-weight:400;
+                        color:rgba(153,153,153,1);
+                        width: 400px;
+                        margin-bottom: 10px;
+                        text-align: center;
+                    }
+                    .openwx{
+                        font-size:28px;
+                        font-family:Microsoft YaHei;
+                        font-weight:400;
+                        color:rgba(153,153,153,1);
+                        margin-bottom: 10px;
+                    }
                 }
-                .boxtime{
-                    font-size:28px;
-                    font-family:Microsoft YaHei;
-                    font-weight:400;
-                    color:rgba(153,153,153,1);
-                    width: 400px;
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-                .openwx{
-                    font-size:28px;
-                    font-family:Microsoft YaHei;
-                    font-weight:400;
-                    color:rgba(153,153,153,1);
-                    margin-bottom: 10px;
+                .nobox{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .notitle{
+                        font-size:32px;
+                        font-family:Microsoft YaHei;
+                        font-weight:400;
+                        color:rgba(51,51,51,1);
+                        margin-bottom: 30px;
+                        margin-bottom: 10px;
+                    }
+                    .nomsg{
+                        font-size:30px;
+                        font-family:Microsoft YaHei;
+                        font-weight:400;
+                        color:red;
+                        margin-bottom: 30px;
+                    }
                 }
                 .boxbtn{
                     width:300px;

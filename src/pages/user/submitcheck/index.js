@@ -13,8 +13,9 @@ export default class SubmitCheck extends Component {
 
     state = {
         tipflag: false,
-        codeflag:false,
-        codemsg:false
+        codeflag: false,
+        codemsg: false,
+        passflag:true
     }
 
     //获取兑换信息
@@ -44,9 +45,16 @@ export default class SubmitCheck extends Component {
             id_card: this.state.infoCard,
         }
         api.api(EXCHANGE_SUBMIT, params).then(res => {
-            if(res.data.state == 1){
+            if (res.data.state == 1) {
                 this.setState({
-                    tipflag:true
+                    tipflag: true,
+                    passflag:true
+                })
+            } else {
+                this.setState({
+                    tipflag: true,
+                    passflag:false,
+                    noMsg:res.data.msg
                 })
             }
         })
@@ -56,9 +64,15 @@ export default class SubmitCheck extends Component {
     phoneCode() {
         api.api(CHECK_CODE).then(res => {
             let val = res.data
-            if(val.state == 1){
+            if (val.state == 1) {
                 this.setState({
-                    
+                    codeflag: true,
+                    codemsg: true
+                })
+            } else {
+                this.setState({
+                    codeflag: true,
+                    codemsg: false
                 })
             }
         })
@@ -76,10 +90,10 @@ export default class SubmitCheck extends Component {
     }
 
     //输入验证码
-    codeChange(e){
+    codeChange(e) {
         console.log(e.target.value)
         this.setState({
-            pCode:e.target.value
+            pCode: e.target.value
         })
     }
 
@@ -102,9 +116,9 @@ export default class SubmitCheck extends Component {
                 <View className='personitem'>
                     <Text>手机号</Text>
                     <span>{infoPhone}</span>
-                    {this.state.codeflag?
-                    <Text className='tipmsg'>{this.state.codemsg?<span>获取成功,五分钟有效</span>:<span>获取失败,五分钟后再试</span>}</Text>
-                    :<Text className='getcode' onClick={this.phoneCode}>获取验证码</Text>
+                    {this.state.codeflag ?
+                        <Text className='tipmsg'>{this.state.codemsg ? <Text>获取成功,五分钟有效</Text> : <Text>获取失败,五分钟后再试</Text>}</Text>
+                        : <Text className='getcode' onClick={this.phoneCode}>获取验证码</Text>
                     }
                 </View>
                 <View className='personitem'>
@@ -136,10 +150,16 @@ export default class SubmitCheck extends Component {
 
             {this.state.tipflag ? <View className='checktip'>
                 <View className='checktipbox'>
-                    <Text className='boxtitle'>您的积分兑换京东购物卡申请已提交审核</Text>
-                    <Text className='boxtime'>1-3个工作日会给审核结果,您可添加官方微信咨询审核进度</Text>
-                    <Image src={wxICon}></Image>
-                    <Text className='openwx'>打开微信扫一扫添加官方微信</Text>
+                    {this.state.passflag?<View className='okbox'>
+                        <Text className='boxtitle'>您的积分兑换京东购物卡申请已提交审核</Text>
+                        <Text className='boxtime'>1-3个工作日会给审核结果,您可添加官方微信咨询审核进度</Text>
+                        <Image src={wxICon}></Image>
+                        <Text className='openwx'>打开微信扫一扫添加官方微信</Text>
+                    </View>:
+                    <View className='nobox'>
+                        <Text className='notitle'>申请提交失败</Text>
+                        <Text className='nomsg'>原因：{this.state.noMsg}</Text>
+                    </View>}
                     <Text className='boxbtn' onClick={this.closeCheckTip}>确定</Text>
                 </View>
             </View> : ''}

@@ -15,7 +15,7 @@ export default class PromotionTip extends Component {
     render() {
         return (
             <View className='promotiontipmain'>
-                <Image src={tipBanner} className='topbanner'></Image>
+                <Image src={'http://jic.makepolo.net/img15/memberpng/tip_banner.png'} className='topbanner'></Image>
                 <View className='codebox'>
                     <span>您的推广码已生成：</span>
                     <span>{this.state.sp_code}</span>
