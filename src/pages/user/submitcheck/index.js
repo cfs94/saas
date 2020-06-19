@@ -1,7 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button } from '@tarojs/components'
-import { EXCHANGE_INFO, CHECK_CODE ,EXCHANGE_SUBMIT} from '@service/api'
+import { EXCHANGE_INFO, CHECK_CODE, EXCHANGE_SUBMIT } from '@service/api'
 import api from '@service/ask'
+import wxICon from '../assets/qybbwx.jpg'
 import './index.scss'
 
 export default class SubmitCheck extends Component {
@@ -10,7 +11,10 @@ export default class SubmitCheck extends Component {
         navigationBarTitleText: '提交信息'
     }
 
-    state = {}
+    state = {
+        tipflag: false,
+        codeflag:false
+    }
 
     //获取兑换信息
     getExchangeInfo() {
@@ -32,32 +36,49 @@ export default class SubmitCheck extends Component {
 
 
     //提交按钮
-    checkSubmit(){
+    checkSubmit() {
         let params = {
-            code:this.state.pCode,
-            real_name:this.state.infoName,
-            id_card:this.state.infoCard,
+            code: this.state.pCode,
+            real_name: this.state.infoName,
+            id_card: this.state.infoCard,
         }
-        api.api(EXCHANGE_SUBMIT,params).then(res=>{
-            
+        api.api(EXCHANGE_SUBMIT, params).then(res => {
+            if(res.data.state == 1){
+                this.setState({
+                    tipflag:true
+                })
+            }
         })
     }
 
     //获取验证码
-    phoneCode(){
-        api.api(CHECK_CODE).then(res=>{
-
+    phoneCode() {
+        api.api(CHECK_CODE).then(res => {
+            if(res.data.state == 0){
+                let val = res.data.data
+                console.log(val)
+            }
         })
     }
 
+    //关闭审核弹窗
+    closeCheckTip() {
+        this.setState({
+            tipflag: false
+        })
+    }
 
     componentDidShow() {
         this.getExchangeInfo()
     }
 
 
+    code(){
+
+    }
+
     render() {
-        let { infoName, infoCard, infoPhone, companyName, companyNum, companyImg } = this.state
+        let { infoName, infoCard, infoPhone, companyName, companyNum, companyImg ,pCode} = this.state
 
         return (<View className='submitmain'>
             <View className='personinfo'>
@@ -77,7 +98,7 @@ export default class SubmitCheck extends Component {
                 </View>
                 <View className='personitem'>
                     <Text>验证码</Text>
-                    <input></input>
+                    <span>{pCode}</span>
                 </View>
             </View>
 
@@ -101,6 +122,23 @@ export default class SubmitCheck extends Component {
                 提交
             </View>
 
+
+            {this.state.tipflag ? <View className='checktip'>
+                <View className='checktipbox'>
+                    <Text className='boxtitle'>您的积分兑换京东购物卡申请已提交审核</Text>
+                    <Text className='boxtime'>1-3个工作日会给审核结果,您可添加官方微信咨询审核进度</Text>
+                    <Image src={wxICon}></Image>
+                    <Text className='openwx'>打开微信扫一扫添加官方微信</Text>
+                    <Text className='boxbtn' onClick={this.closeCheckTip}>确定</Text>
+                </View>
+            </View> : ''}
+
+
         </View>)
     }
+
+
+
+
+
 } 

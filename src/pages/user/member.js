@@ -283,9 +283,10 @@ export default class BuyMember extends Component {
 
      //购买钻石
      buyDiamon() {
+         console.log(this.state.sp_code)
         let params = {
             app_id: 10095,
-            sp_code: ''
+            sp_code: this.state.sp_code
         }
         api.api(BUY_MEMBER, params).then(res => {
             // console.log(res,'钻石')
@@ -322,7 +323,7 @@ export default class BuyMember extends Component {
     buyBlack() {
         let params = {
             app_id: 10097,
-            sp_code: ''
+            sp_code: this.state.sp_code
         }
         api.api(BUY_MEMBER, params).then(res => {
             let that = this
@@ -383,12 +384,14 @@ export default class BuyMember extends Component {
     //获取套餐信息
     getPrice(){
         api.api(MEMBER_PRICE).then(res=>{
-            let diamonPrice = res.data.data['10095'].price
-            let blackPrice = res.data.data['10097'].price
-           
+            let diamonPrice = res.data.data.app_info['10095'].price
+            let blackPrice = res.data.data.app_info['10097'].price
+            let sp_code = res.data.data.sp_code
+            console.log(sp_code)
             this.setState({
                 diamonPrice:diamonPrice,
-                blackPrice:blackPrice
+                blackPrice:blackPrice,
+                sp_code:sp_code
             })
         })
     }
