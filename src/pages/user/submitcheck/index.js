@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button } from '@tarojs/components'
 import { EXCHANGE_INFO, CHECK_CODE, EXCHANGE_SUBMIT } from '@service/api'
 import api from '@service/ask'
-import wxICon from '../assets/qybbwx.jpg'
+
 import './index.scss'
 
 export default class SubmitCheck extends Component {
@@ -153,7 +153,7 @@ export default class SubmitCheck extends Component {
                     {this.state.passflag?<View className='okbox'>
                         <Text className='boxtitle'>您的积分兑换京东购物卡申请已提交审核</Text>
                         <Text className='boxtime'>1-3个工作日会给审核结果,您可添加官方微信咨询审核进度</Text>
-                        <Image src={wxICon}></Image>
+                        <Image src={'http://jic.makepolo.net/img15/hyldy/qybbwx.jpg'}></Image>
                         <Text className='openwx'>打开微信扫一扫添加官方微信</Text>
                     </View>:
                     <View className='nobox'>

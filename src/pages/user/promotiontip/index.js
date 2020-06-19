@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button } from '@tarojs/components'
 import api from '@service/ask'
 import { MEMBER_PRICE} from '@service/api'
-import tipBanner from '../assets/tip_banner.png'
+
 import './index.scss'
 
 export default class PromotionTip extends Component {
@@ -54,7 +54,7 @@ export default class PromotionTip extends Component {
         return {
           title: '转发即可获得500元现金',
           path: '/page/user/member?sp_code='+this.state.sp_code,
-          imageUrl:tipBanner
+          imageUrl:''
         }
     }
 
