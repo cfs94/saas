@@ -134,7 +134,7 @@ class MemberPackage extends Component {
                         <View className='paydiv'>
                             <span>￥<i>{diamonPrice}</i>/年</span>
                             <span>原价¥23990</span>
-                            <span>询盘订单可提升300%</span>
+                            <span>询盘订单可提升200%</span>
                         </View>
                     </View>
                     <View className='diamonbtn' onClick={this.buyDiamon}>立即开通</View>
@@ -149,7 +149,7 @@ class MemberPackage extends Component {
                         <View className='paydiv'>
                             <span>￥<i>{blackPrice}</i>/年</span>
                             <span>原价¥57990</span>
-                            <span>询盘订单可提升300%</span>
+                            <span>询盘订单可提升600%</span>
                         </View>
 
                     </View>

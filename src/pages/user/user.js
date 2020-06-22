@@ -137,7 +137,7 @@ class User extends Component {
 							<Text>{endTime}</Text>
 						</View>
 					</View>
-					<View className='look-over'>
+					<View className='look-over' onClick={this.toBuyMember}>
 						查看权益
 					</View>
 					<Image src={memberType == '钻石会员' ? diaIcon : b_Icon} className='dia-icon'></Image>
@@ -147,9 +147,9 @@ class User extends Component {
 							<span>您还不是会员</span>
 							<span>会员享百度等搜索引擎优先收录排名</span>
 						</View>
-						<View className='to-m'>
+						<View className='to-m' onClick={this.toBuyMember}>
 							成为会员
-					</View>
+						</View>
 						<Image src={no_m} className='no-icon'></Image>
 					</View>}
 

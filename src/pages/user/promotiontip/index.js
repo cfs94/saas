@@ -52,7 +52,7 @@ export default class PromotionTip extends Component {
          
         }
         return {
-          title: '转发即可获得500元现金',
+          title: `仅限前10名---会员一折购，原价23999现价${this.state.diamonPrice}`,
           path: `/pages/user/member?sp_code=${this.state.sp_code}`,
           imageUrl:''
         }
