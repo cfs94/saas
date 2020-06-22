@@ -53,7 +53,7 @@ export default class PromotionTip extends Component {
         }
         return {
           title: '转发即可获得500元现金',
-          path: '/page/user/member?sp_code='+this.state.sp_code,
+          path: `/pages/user/member?sp_code=${this.state.sp_code}`,
           imageUrl:''
         }
     }
@@ -79,7 +79,9 @@ export default class PromotionTip extends Component {
             })
         })
     }
-   
+    
+
+    
 
 
 }

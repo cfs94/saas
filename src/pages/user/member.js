@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button } from '@tarojs/components'
 import api from '@service/ask'
-import { BUY_MEMBER, CHECK_MEMBER ,MEMBER_PRICE} from '@service/api'
+import { BUY_MEMBER, CHECK_MEMBER, MEMBER_PRICE } from '@service/api'
 import bIcon from './assets/diamonicon.png'
 import dIcon from './assets/blackicon.png'
 import topIcon from './assets/membertop.png'
@@ -49,40 +49,40 @@ const freelist = [
     { i: noIcon }
 ]
 
-const  diamonlist=[
-    {s:'1500条/年',p:"￥1499/年"},
-    {s:'全年服务',p:"￥1999/年"},
-    {s:'全年服务',p:"￥5999/年"},
-    {s:'300个',p:"￥2999/年"},
-    {s:'排名前五',p:"￥2999/年"},
-    {s:'排名前五',p:"￥2999/年"},
-    {s:'30条/年',p:"￥899/年"},
-    {s:'全年服务',p:"￥2999/年"},
-    {s:'全年服务',p:"￥599/年"},
-    {s:'1次/1天',p:"￥999/年"},
-    {s:fourIcon,p:"￥299/年"},
-    {s:'6条/年',p:"￥999/年"},
-    {s:noIcon},
-    {s:noIcon},
-    {s:noIcon},
+const diamonlist = [
+    { s: '1500条/年', p: "￥1499/年" },
+    { s: '全年服务', p: "￥1999/年" },
+    { s: '全年服务', p: "￥5999/年" },
+    { s: '300个', p: "￥2999/年" },
+    { s: '排名前五', p: "￥2999/年" },
+    { s: '排名前五', p: "￥2999/年" },
+    { s: '30条/年', p: "￥899/年" },
+    { s: '全年服务', p: "￥2999/年" },
+    { s: '全年服务', p: "￥599/年" },
+    { s: '1次/1天', p: "￥999/年" },
+    { s: fourIcon, p: "￥299/年" },
+    { s: '6条/年', p: "￥999/年" },
+    { s: noIcon },
+    { s: noIcon },
+    { s: noIcon },
 ]
 
-const blacklist =[
-    {s:'3000条/年',p:'￥2999/年'},
-    {s:'全年服务',p:'￥1999/年'},
-    {s:'全年服务',p:'￥5999/年'},
-    {s:'800个',p:'￥6999/年'},
-    {s:'排名第一',p:'￥6999/年'},
-    {s:'排名第一',p:'￥6999/年'},
-    {s:'60条/年',p:'￥1799/年'},
-    {s:'全年服务',p:'￥2999/年'},
-    {s:'全年服务',p:'￥599/年'},
-    {s:'不限次数',p:'￥6999/年'},
-    {s:fiveIcon,p:'￥3999/年'},
-    {s:'无限看',p:'￥4999/年'},
-    {s:'全年服务',p:'￥6999/年'},
-    {s:'全年服务',p:'￥6999/年'},
-    {s:'全年服务',p:'￥6999/年'},
+const blacklist = [
+    { s: '3000条/年', p: '￥2999/年' },
+    { s: '全年服务', p: '￥1999/年' },
+    { s: '全年服务', p: '￥5999/年' },
+    { s: '800个', p: '￥6999/年' },
+    { s: '排名第一', p: '￥6999/年' },
+    { s: '排名第一', p: '￥6999/年' },
+    { s: '60条/年', p: '￥1799/年' },
+    { s: '全年服务', p: '￥2999/年' },
+    { s: '全年服务', p: '￥599/年' },
+    { s: '不限次数', p: '￥6999/年' },
+    { s: fiveIcon, p: '￥3999/年' },
+    { s: '无限看', p: '￥4999/年' },
+    { s: '全年服务', p: '￥6999/年' },
+    { s: '全年服务', p: '￥6999/年' },
+    { s: '全年服务', p: '￥6999/年' },
 ]
 
 
@@ -97,8 +97,18 @@ export default class BuyMember extends Component {
         payflag: false
     }
 
-    componentDidShow(){
+    componentWillMount() {
+        if (this.$router.params.sp_code) {
+            this.setState({
+                sp_code: this.$router.params.sp_code
+            })
+        }
+    }
+
+
+    componentDidShow() {
         this.getPrice()
+        // console.log(this.$router.params)
     }
 
     render() {
@@ -118,22 +128,22 @@ export default class BuyMember extends Component {
         })
 
         //钻石会员内容
-        const diamonview = diamonlist.map((item,index)=>{
+        const diamonview = diamonlist.map((item, index) => {
             return <View key={index} className='diamonitem'>
-                {index == 10 || index == 12 || index == 13 || index == 14 ? <Image src={item.s} className={'img'+index}></Image>:<span>{item.s}</span>}
+                {index == 10 || index == 12 || index == 13 || index == 14 ? <Image src={item.s} className={'img' + index}></Image> : <span>{item.s}</span>}
                 <span>{item.p}</span>
             </View>
         })
 
         //黑钻会员内容
-        const blackview = blacklist.map((item,index)=>{
+        const blackview = blacklist.map((item, index) => {
             return <View key={index} className='blackitem'>
-                    {index == 10 ?<Image src={fiveIcon}></Image>:<span>{item.s}</span>}
-                    <span>{item.p}</span>
+                {index == 10 ? <Image src={fiveIcon}></Image> : <span>{item.s}</span>}
+                <span>{item.p}</span>
             </View>
         })
 
-        let {diamonPrice,blackPrice} = this.state
+        let { diamonPrice, blackPrice } = this.state
 
         return (
             <View className='buymembermain'>
@@ -214,7 +224,7 @@ export default class BuyMember extends Component {
                         <View className='blackul'>
                             {blackview}
                         </View>
-                    
+
                     </View>
 
                     <View className='tablebottom'>
@@ -245,7 +255,7 @@ export default class BuyMember extends Component {
                 <View className='memberbtn'>
                     <View onClick={this.buyDiamon} className='diabtn'>开通钻石会员</View>
                     <View onClick={this.buyBlack} className='blabtn'>开通黑钻会员</View>
-                </View>                
+                </View>
                 <View className='lookbtn'>查看特权详情</View>
                 <View className='chatus'>
                     <Image src={phoneIcon}></Image>
@@ -273,7 +283,7 @@ export default class BuyMember extends Component {
     }
 
     //确定按钮
-    memberOk(){
+    memberOk() {
         this.setState({
             showTip: false,
             payflag: false
@@ -281,9 +291,9 @@ export default class BuyMember extends Component {
     }
 
 
-     //购买钻石
-     buyDiamon() {
-         console.log(this.state.sp_code)
+    //购买钻石
+    buyDiamon() {
+        console.log(this.state.sp_code)
         let params = {
             app_id: 10095,
             sp_code: this.state.sp_code
@@ -352,7 +362,7 @@ export default class BuyMember extends Component {
     }
 
 
-    
+
     //检查是否购买
     checkOrder(param) {
         let id = {
@@ -380,18 +390,25 @@ export default class BuyMember extends Component {
         })
     }
 
-    
+
     //获取套餐信息
-    getPrice(){
-        api.api(MEMBER_PRICE).then(res=>{
+    getPrice() {
+        api.api(MEMBER_PRICE).then(res => {
             let diamonPrice = res.data.data.app_info['10095'].price
             let blackPrice = res.data.data.app_info['10097'].price
             let sp_code = res.data.data.sp_code
-            console.log(sp_code)
+            if (this.$router.params.sp_code) {
+                this.setState({
+                    diamonPrice: diamonPrice,
+                    blackPrice: blackPrice,
+                    sp_code: this.$router.params.sp_code
+                })
+                return false
+            }
             this.setState({
-                diamonPrice:diamonPrice,
-                blackPrice:blackPrice,
-                sp_code:sp_code
+                diamonPrice: diamonPrice,
+                blackPrice: blackPrice,
+                sp_code: sp_code
             })
         })
     }
