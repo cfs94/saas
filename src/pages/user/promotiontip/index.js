@@ -54,7 +54,7 @@ export default class PromotionTip extends Component {
         return {
           title: `仅限前10名---会员一折购，原价23999现价${this.state.diamonPrice}`,
           path: `/pages/user/member?sp_code=${this.state.sp_code}`,
-          imageUrl:''
+          imageUrl:'http://jic.makepolo.net/img15/memberpng/shareimg.png'
         }
     }
 

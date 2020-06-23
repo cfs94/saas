@@ -266,7 +266,7 @@ export default class BuyMember extends Component {
                     <span>官方热线：010-82855119</span>
                 </View>
 
-                <View className='getbtn'>立即享受会员特权</View>
+                <View className='getbtn' onClick={this.buyDiamon}>立即享受会员特权</View>
 
                 {this.state.showTip ? <View className='membertip'>
                     <View className='tipbox'>
