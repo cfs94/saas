@@ -60,7 +60,7 @@ const diamonlist = [
     { s: '全年服务', p: "￥2999/年" },
     { s: '全年服务', p: "￥599/年" },
     { s: '1次/1天', p: "￥999/年" },
-    { s: fourIcon, p: "￥299/年" },
+    { s: fourIcon, p: "￥2999/年" },
     { s: '6条/年', p: "￥999/年" },
     { s: noIcon },
     { s: noIcon },
@@ -237,13 +237,13 @@ export default class BuyMember extends Component {
                         <View className='toptitle'>
                             <Image src={dIcon} className='micon'></Image>
                             <span>钻石会员</span>
-                            <span>￥799/年</span>
+                            <span>￥{diamonPrice}/年</span>
                             <span>原价23990</span>
                         </View>
                         <View className='toptitle'>
                             <Image src={bIcon} className='micon'></Image>
                             <span>黑钻会员</span>
-                            <span>￥1999/年</span>
+                            <span>￥{blackPrice}/年</span>
                             <span>原价57990</span>
                         </View>
                     </View>

@@ -31,7 +31,7 @@ class App extends Component {
       'pages/forget-pwd/forget-pwdy',
       'pages/trade/trade',
       'pages/trade/choose-per',
-      'pages/user/user', 
+      'pages/user/user',
       'pages/user/about-us',
       'pages/user/member',
       'pages/user/promotionlist',

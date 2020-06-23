@@ -458,40 +458,6 @@ page{
                     display: flex;
                     flex-direction: column;
                     width: 200px;
-                    view{
-                        padding: 34px 0 33px 0;
-                    }
-                    view:nth-child(4){
-                        padding: 71px 0 72px 0;
-                    }
-                    view:nth-child(6){
-                        padding: 71px 0 72px 0;
-                    }
-                    view:nth-child(7){
-                        padding: 53px 0;
-                    }
-                    view:nth-child(9){
-                        padding: 53px 0;
-                    }
-                    
-                    view:nth-child(11){
-                        padding: 43px 0 44px 0;
-                    }
-                    view:nth-child(12){
-                        padding: 53px 0;
-                    }
-                    view:nth-child(13){
-                        padding: 55px 0 56px 0;
-                    }
-                    view:nth-child(14){
-                        padding: 74px 0;
-                    }
-                    view:nth-child(15){
-                        padding: 55px 0 56px 0;
-                    }
-                    view:nth-child(even){
-                        background:rgba(252,251,250,1);
-                    }
                     .diamonitem{
                         display: flex;
                         flex-direction: column;
@@ -527,11 +493,68 @@ page{
                         }
 
                     }
+                    view{
+                        padding: 34px 0 33px 0;
+                    }
+                    view:nth-child(4){
+                        padding: 71px 0 72px 0;
+                    }
+                    view:nth-child(6){
+                        padding: 71px 0 72px 0;
+                    }
+                    view:nth-child(7){
+                        padding: 53px 0;
+                    }
+                    view:nth-child(9){
+                        padding: 53px 0;
+                    }
+                    
+                    view:nth-child(11){
+                        padding: 43px 0 44px 0;
+                    }
+                    view:nth-child(12){
+                        padding: 53px 0;
+                    }
+                    view:nth-child(13){
+                        padding: 55px 0 56px 0;
+                    }
+                    view:nth-child(14){
+                        padding: 74px 0;
+                    }
+                    view:nth-child(15){
+                        padding: 55px 0 56px 0;
+                    }
+                    view:nth-child(even){
+                        background:rgba(252,251,250,1);
+                    }
+                   
                 }
                 .blackul{
                     display: flex;
                     flex-direction: column;
                     width: 200px;
+                    .blackitem{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        span:nth-child(1){
+                            font-size:28px;
+                            font-family:Alibaba PuHuiTi;
+                            font-weight:400;
+                            color:rgba(255,69,69,1);
+                        }
+                        span:nth-child(2){
+                            font-size:24px;
+                            font-family:Alibaba PuHuiTi;
+                            font-weight:400;
+                            color:rgba(101,101,101,1);
+                        }
+                        image{
+                            width: 104px;
+                            height: 19px;
+                        }
+                    }
                     view{
                         padding: 34px 0 33px 0;
                     }
@@ -562,28 +585,7 @@ page{
                     view:nth-child(even){
                         background:rgba(252,251,250,1);
                     }
-                    .blackitem{
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        span:nth-child(1){
-                            font-size:28px;
-                            font-family:Alibaba PuHuiTi;
-                            font-weight:400;
-                            color:rgba(255,69,69,1);
-                        }
-                        span:nth-child(2){
-                            font-size:24px;
-                            font-family:Alibaba PuHuiTi;
-                            font-weight:400;
-                            color:rgba(101,101,101,1);
-                        }
-                        image{
-                            width: 104px;
-                            height: 19px;
-                        }
-                    }
+                    
                 }
             }
         }
