@@ -77,7 +77,7 @@ class User extends Component {
 					api.api(LOGOUT).then(res => {
 						if (res.data.state == 1) {
 							Taro.showToast({ title: '退出登录成功', icon: 'none' })
-							Session.clear()
+							// Session.clear()
 							setTimeout(() => {
 								Taro.navigateTo({ url: '/pages/login/login' })
 							}, 500)

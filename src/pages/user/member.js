@@ -301,6 +301,10 @@ export default class BuyMember extends Component {
         api.api(BUY_MEMBER, params).then(res => {
             // console.log(res,'钻石')
             let that = this
+            if(res.data.state == 2){
+                Taro.showToast({ title: res.data.msg, icon: 'none' })
+                Taro.navigateTo({ url: '/pages/first-login/first-login' })
+            }
             if (res.data.state == 1) {
                 this.setState({
                     order_id: res.data.data.order_id
@@ -339,6 +343,10 @@ export default class BuyMember extends Component {
         }
         api.api(BUY_MEMBER, params).then(res => {
             let that = this
+            if(res.data.state == 2){
+                Taro.showToast({ title: res.data.msg, icon: 'none' })
+                Taro.navigateTo({ url: '/pages/first-login/first-login' })
+            }
             if (res.data.state == 1) {
                 this.setState({
                     order_id: res.data.data.order_id
@@ -359,7 +367,7 @@ export default class BuyMember extends Component {
                 })
             } else {
                 Taro.showToast({ title: res.data.msg, icon: 'none' })
-                Taro.navigateTo({ url: '/pages/first-login/first-login' })
+                
             }
         })
     }
