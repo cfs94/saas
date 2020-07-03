@@ -122,7 +122,7 @@ export default class BuyMember extends Component {
 
         //免费会员内容
         const freeview = freelist.map((item, index) => {
-            return <View key={index} className='freeitem'>
+            return <View key={index} className={'freeitem'+index}>
                 {index == 0 ? <span>{item.i}</span> : <Image src={item.i} className='nicon'></Image>}
             </View>
         })
@@ -324,7 +324,9 @@ export default class BuyMember extends Component {
                     }
                 })
             } else {
+                
                 Taro.showToast({ title: res.data.msg, icon: 'none' })
+                Taro.navigateTo({ url: '/pages/first-login/first-login' })
             }
         })
     }
@@ -357,6 +359,7 @@ export default class BuyMember extends Component {
                 })
             } else {
                 Taro.showToast({ title: res.data.msg, icon: 'none' })
+                Taro.navigateTo({ url: '/pages/first-login/first-login' })
             }
         })
     }

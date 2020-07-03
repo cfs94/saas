@@ -15,10 +15,11 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/index/index',
       'pages/first-login/first-login',
       'pages/register/register',
       'pages/login/login',
-      'pages/index/index',
+      
       'pages/protocol/protocol',
       'pages/purchase/purchase',
       'pages/purchase/cgt-detail',

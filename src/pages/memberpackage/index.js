@@ -24,6 +24,7 @@ class MemberPackage extends Component {
         api.api(BUY_MEMBER, params).then(res => {
             // console.log(res,'钻石')
             let that = this
+            
             if (res.data.state == 1) {
                 this.setState({
                     order_id: res.data.data.order_id
@@ -47,7 +48,9 @@ class MemberPackage extends Component {
                     }
                 })
             } else {
+               
                 Taro.showToast({ title: res.data.msg, icon: 'none' })
+                Taro.navigateTo({ url: '/pages/first-login/first-login' })
             }
         })
     }
@@ -80,6 +83,7 @@ class MemberPackage extends Component {
                 })
             } else {
                 Taro.showToast({ title: res.data.msg, icon: 'none' })
+                Taro.navigateTo({ url: '/pages/first-login/first-login' })
             }
         })
     }
