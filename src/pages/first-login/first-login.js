@@ -10,6 +10,8 @@ Page({
         requestResult: ''
     },
 
+    
+
     bindGetUserInfo: function (e) {
       if (this.data.logged) return;
       var that = this;

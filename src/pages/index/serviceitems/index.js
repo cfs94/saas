@@ -57,10 +57,16 @@ export default class Items extends Component {
         return (
             <View>
                 <Text className='servicetitle'>推荐服务</Text>
-                <View className='itembox'>
+                <View className='itembox' onClick={this.toBuyMember}>
                     {viewItem}
                 </View>
             </View>
         )
     }
+
+
+
+    toBuyMember() {
+		Taro.navigateTo({ url: '/pages/user/member' })
+	}
 }

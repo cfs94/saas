@@ -6,6 +6,7 @@ import diaIcon from '../user/assets/m_z.png'
 import bIcon from '../user/assets/b_m_z.png'
 import topIcon from '../user/assets/top.png'
 import './index.scss'
+let Session = require('@utils/first-login/session')
 
 class MemberPackage extends Component {
     state = {
@@ -21,44 +22,53 @@ class MemberPackage extends Component {
             app_id: 10095,
             sp_code: this.state.sp_code
         }
-        api.api(BUY_MEMBER, params).then(res => {
-            // console.log(res,'钻石')
-            let that = this
-            
-
-            if(res.data.state == 2){
-                Taro.showToast({ title: res.data.msg, icon: 'none' })
+        if(Session.get()){
+            api.api(BUY_MEMBER, params).then(res => {
+                // console.log(res,'钻石')
+                let that = this
+                
+    
+                if(res.data.state == 2 || res.data.state == 9){
+                    Taro.showToast({ title: res.data.msg, icon: 'none' })
+                    Taro.navigateTo({ url: '/pages/first-login/first-login' })
+                }
+    
+                if (res.data.state == 1) {
+                    this.setState({
+                        order_id: res.data.data.order_id
+                    })
+                    Taro.requestPayment({
+                        timeStamp: res.data.data.timeStamp,
+                        nonceStr: res.data.data.nonceStr,
+                        package: res.data.data.package,
+                        signType: res.data.data.signType,
+                        paySign: res.data.data.paySign,
+                        success(val) {
+    
+    
+                            that.checkOrder(res.data.data.order_id)
+    
+    
+                            // Taro.navigateTo({ url: '/pages/result-pay/result-pay?type=0' })
+                        },
+                        fail(res) {
+                            // Taro.navigateTo({ url: `/pages/result-pay/result-pay?type=1&typeService=2&orderId=${id}` })
+                        }
+                    })
+                } else {
+                   
+                    Taro.showToast({ title: res.data.msg, icon: 'none' })
+                   
+                }
+            })
+        }else{
+            Taro.showToast({ title: '请先登录', icon: 'none' })
+            let t = null
+            t = setTimeout(()=>{
                 Taro.navigateTo({ url: '/pages/first-login/first-login' })
-            }
-
-            if (res.data.state == 1) {
-                this.setState({
-                    order_id: res.data.data.order_id
-                })
-                Taro.requestPayment({
-                    timeStamp: res.data.data.timeStamp,
-                    nonceStr: res.data.data.nonceStr,
-                    package: res.data.data.package,
-                    signType: res.data.data.signType,
-                    paySign: res.data.data.paySign,
-                    success(val) {
-
-
-                        that.checkOrder(res.data.data.order_id)
-
-
-                        // Taro.navigateTo({ url: '/pages/result-pay/result-pay?type=0' })
-                    },
-                    fail(res) {
-                        // Taro.navigateTo({ url: `/pages/result-pay/result-pay?type=1&typeService=2&orderId=${id}` })
-                    }
-                })
-            } else {
-               
-                Taro.showToast({ title: res.data.msg, icon: 'none' })
-               
-            }
-        })
+            },1000)
+        }
+       
     }
 
     //购买黑钻
@@ -67,35 +77,44 @@ class MemberPackage extends Component {
             app_id: 10097,
             sp_code: this.state.sp_code
         }
-        api.api(BUY_MEMBER, params).then(res => {
-            let that = this
-            if(res.data.state == 2){
-                Taro.showToast({ title: res.data.msg, icon: 'none' })
+        if(Session.get()){
+            api.api(BUY_MEMBER, params).then(res => {
+                let that = this
+                if(res.data.state == 2 || res.data.state == 9){
+                    Taro.showToast({ title: res.data.msg, icon: 'none' })
+                    Taro.navigateTo({ url: '/pages/first-login/first-login' })
+                }
+                if (res.data.state == 1) {
+                    this.setState({
+                        order_id: res.data.data.order_id
+                    })
+                    Taro.requestPayment({
+                        timeStamp: res.data.data.timeStamp,
+                        nonceStr: res.data.data.nonceStr,
+                        package: res.data.data.package,
+                        signType: res.data.data.signType,
+                        paySign: res.data.data.paySign,
+                        success() {
+                            that.checkOrder(res.data.data.order_id)
+                            // Taro.navigateTo({ url: '/pages/result-pay/result-pay?type=0' })
+                        },
+                        fail(res) {
+                            // Taro.navigateTo({ url: `/pages/result-pay/result-pay?type=1&typeService=2&orderId=${id}` })
+                        }
+                    })
+                } else {
+                    Taro.showToast({ title: res.data.msg, icon: 'none' })
+                    
+                }
+            })
+        }else{
+            Taro.showToast({ title: '请先登录', icon: 'none' })
+            let t = null
+            t = setTimeout(()=>{
                 Taro.navigateTo({ url: '/pages/first-login/first-login' })
-            }
-            if (res.data.state == 1) {
-                this.setState({
-                    order_id: res.data.data.order_id
-                })
-                Taro.requestPayment({
-                    timeStamp: res.data.data.timeStamp,
-                    nonceStr: res.data.data.nonceStr,
-                    package: res.data.data.package,
-                    signType: res.data.data.signType,
-                    paySign: res.data.data.paySign,
-                    success() {
-                        that.checkOrder(res.data.data.order_id)
-                        // Taro.navigateTo({ url: '/pages/result-pay/result-pay?type=0' })
-                    },
-                    fail(res) {
-                        // Taro.navigateTo({ url: `/pages/result-pay/result-pay?type=1&typeService=2&orderId=${id}` })
-                    }
-                })
-            } else {
-                Taro.showToast({ title: res.data.msg, icon: 'none' })
-                
-            }
-        })
+            },1000)
+        }
+        
     }
 
 
